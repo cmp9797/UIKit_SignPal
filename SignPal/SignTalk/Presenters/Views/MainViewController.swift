@@ -26,6 +26,7 @@ class MainViewController: UIViewController {
     }
     
     func startRotationAnimation() {
+        
             UIView.animate(
                 withDuration: 1,
                 delay: 1,

@@ -11,11 +11,11 @@ class MiniGameManager {
     
     //GAME
     var signPoses : [SignPose] = [
-        SignPose(name: "A"),
-        SignPose(name: "B"),
         SignPose(name: "C"),
-        SignPose(name: "D"),
-        SignPose(name: "E"),
+        SignPose(name: "D")
+//        SignPose(name: "C"),
+//        SignPose(name: "D"),
+//        SignPose(name: "E"),
     ]
     
     var question = ""
@@ -29,7 +29,8 @@ class MiniGameManager {
     }
     
     func isCorrect(detectedPose : String) -> Bool {
-        if detectedPose == self.question {
+        print("~\(detectedPose == question) - q:\(question) __  ans:\(detectedPose)")
+        if detectedPose == question {
             return true
         }
         

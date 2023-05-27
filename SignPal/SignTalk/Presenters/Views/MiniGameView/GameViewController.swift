@@ -11,6 +11,8 @@ class GameViewController: UIViewController {
     
     /// A predictor instance that uses Vision and Core ML to generate prediction strings from a photo.
     let signPoseClassifier = SignPoseClassifier()
+    let miniGameManager = MiniGameManager()
+    
     var detectedPose = ""
     var timer: Timer?
 
@@ -25,11 +27,11 @@ class GameViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        generateNewQuestion()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        questionLbl.text = miniGameManager.question
     }
     
 }
@@ -44,24 +46,21 @@ extension GameViewController {
     func validatePhoto(_ photo: UIImage) {
 //        DispatchQueue.global(qos: .userInitiated).async {
             self.classifyTheSign(photo)
-//            self.showPopup()
 
 //        }
         showPopup()
     }
     
     func showPopup() {
-        print("popup (\(MiniGameManager().isCorrect(detectedPose: detectedPose)))")
-        print("quest: \(MiniGameManager().question)")
+        print("quest: \(miniGameManager.question) // label: \(questionLbl.text ?? "nayy")")
         print("ans: \(detectedPose)")
         
-        if MiniGameManager().isCorrect(detectedPose: detectedPose) {
+        if miniGameManager.isCorrect(detectedPose: detectedPose) {
             popUpIconLbl!.image = UIImage(systemName: "checkmark.circle.fill")
             popUpIconLbl.tintColor = UIColor.green
             
             popUpTextLbl.text = "Yeay, you got it!"
             
-            generateNewQuestion()
         } else {
             popUpIconLbl.image = UIImage(systemName: "xmark.circle.fill")
             popUpIconLbl.tintColor = UIColor.red
@@ -78,7 +77,7 @@ extension GameViewController {
         popUpTextLbl.isHidden = false
         
         // Start the timer to dismiss the pop-up after a certain duration
-        timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(dismissPopup), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(dismissPopup), userInfo: nil, repeats: false)
 
         
 //        dismissPopup()
@@ -93,8 +92,8 @@ extension GameViewController {
     }
     
     func generateNewQuestion() {
-        MiniGameManager().setRandomQuestion()
-        questionLbl.text = MiniGameManager().question
+        miniGameManager.setRandomQuestion()
+        questionLbl.text = miniGameManager.question
     }
     
 }
@@ -122,7 +121,6 @@ extension GameViewController {
         }
         
         detectedPose = String(describing: predictions.first!.classification)
-        print("mypose: \(detectedPose), the q: \(MiniGameManager().question)")
     }
 
 }
