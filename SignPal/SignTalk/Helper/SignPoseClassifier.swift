@@ -5,22 +5,19 @@
 //  Created by Celine Margaretha on 25/05/23.
 //
 
-
 import Vision
 import UIKit
 
-/// A convenience class that makes image classification predictions.
-///
-/// The Image Predictor creates and reuses an instance of a Core ML image classifier inside a ``VNCoreMLRequest``.
-/// Each time it makes a prediction, the class:
-/// - Creates a `VNImageRequestHandler` with an image
-/// - Starts an image classification request for that image
-/// - Converts the prediction results in a completion handler
-/// - Updates the delegate's `predictions` property
-/// - Tag: ImagePredictor
+/// A  class that makes image classification predictions.
+
 class SignPoseClassifier {
-    /// - Tag: name
-    static func createImageClassifier() -> VNCoreMLModel {
+    
+    // MARK: Create an instance of a CoreML image classifier
+    /// Create one reuseable ``VNCoreMLModel`` instance for each Core ML model file (.mlmodel)
+    /// each Core ML model file only needs to be created once  to reduce time and resource usage
+    private static let imageClassifier = createImageClassifier()
+    
+    private static func createImageClassifier() -> VNCoreMLModel {
         // Use a default model configuration.
         let defaultConfig = MLModelConfiguration()
 
@@ -42,43 +39,25 @@ class SignPoseClassifier {
         return imageClassifierVisionModel
     }
 
-    /// A common image classifier instance that all Image Predictor instances use to generate predictions.
-    ///
-    /// Share one ``VNCoreMLModel`` instance --- for each Core ML model file --- across the app,
-    /// since each can be expensive in time and resources.
-    private static let imageClassifier = createImageClassifier()
-
-    /// Stores a classification name and confidence for an image classifier's prediction.
-    /// - Tag: Prediction
-    struct Prediction {
-        /// The name of the object or scene the image classifier recognizes in an image.
-        let classification: String
-
-        /// The image classifier's confidence as a percentage string.
-        let confidencePercentage: String   /// The prediction string doesn't include the % symbol in the string.
-    }
-
+    
+    
+    // MARK: Create and initialize handlers for prediction process
     /// The function signature the caller must provide as a completion handler.
-    typealias ImagePredictionHandler = (_ predictions: [Prediction]?) -> Void
+    typealias ImagePredictionHandler = (_ predictions: [SignPose]?) -> Void
 
     /// A dictionary of prediction handler functions, each keyed by its Vision request.
     private var predictionHandlers = [VNRequest: ImagePredictionHandler]()
 
-    /// Generates a new request instance that uses the Image Predictor's image classifier model.
-    private func createImageClassificationRequest() -> VNImageBasedRequest {
-        // Create an image classification request with an image classifier model.
-
-        let imageClassificationRequest = VNCoreMLRequest(model: SignPoseClassifier.imageClassifier,
-                                                         completionHandler: visionRequestHandler)
-
-        imageClassificationRequest.imageCropAndScaleOption = .centerCrop
-        return imageClassificationRequest
-    }
-
+    
+    
+    // MARK: Create a `VNImageRequestHandler` with an image input that want to be predicted
+    
     /// Generates an image classification prediction for a photo.
     /// - Parameter photo: An image, typically of an object or a scene.
-    /// - Tag: makePredictions
-    func makePredictions(for photo: UIImage, completionHandler: @escaping ImagePredictionHandler) throws {
+
+    /// Note: Add an `CGImagePropertyOrientation` extension to make converting between the image orientations defined by UIKit (UIImage.Orientation) and Core Graphics (CGImagePropertyOrientation) easier.
+    
+    private func makePredictions(for photo: UIImage, completionHandler: @escaping ImagePredictionHandler) throws {
         let orientation = CGImagePropertyOrientation(photo.imageOrientation)
 
         guard let photoImage = photo.cgImage else {
@@ -94,14 +73,30 @@ class SignPoseClassifier {
         // Start the image classification request.
         try handler.perform(requests)
     }
+    
+    
+    
+    // MARK: Starts an image classification request for inputed image
+    /// Generates a new request instance that uses the Image Predictor's image classifier model.
+    private func createImageClassificationRequest() -> VNImageBasedRequest {
+        // Create an image classification request with an image classifier model.
+        let imageClassificationRequest = VNCoreMLRequest(model: SignPoseClassifier.imageClassifier, completionHandler: visionRequestHandler)
 
-    /// The completion handler method that Vision calls when it completes a request.
+        imageClassificationRequest.imageCropAndScaleOption = .centerCrop
+        return imageClassificationRequest
+    }
+
+    
+
+    // MARK: Converts the prediction results in a completion handler and Updates the delegate's `predictions` property
     /// - Parameters:
     ///   - request: A Vision request.
     ///   - error: An error if the request produced an error; otherwise `nil`.
-    ///
-    ///   The method checks for errors and validates the request's results.
-    /// - Tag: visionRequestHandler
+  
+    /// Note: The method checks for errors and validates the request's results.
+    
+    private var signPosePredictionResults: [SignPose]? = nil
+
     private func visionRequestHandler(_ request: VNRequest, error: Error?) {
         // Remove the caller's handler from the dictionary and keep a reference to it.
         guard let predictionHandler = predictionHandlers.removeValue(forKey: request) else {
@@ -109,12 +104,12 @@ class SignPoseClassifier {
         }
 
         // Start with a `nil` value in case there's a problem.
-        var predictions: [Prediction]? = nil
+        signPosePredictionResults = nil
 
         // Call the client's completion handler after the method returns.
         defer {
             // Send the predictions back to the client.
-            predictionHandler(predictions)
+            predictionHandler(signPosePredictionResults)
         }
 
         // Check for an error first.
@@ -131,19 +126,50 @@ class SignPoseClassifier {
 
         // Cast the request's results as an `VNClassificationObservation` array.
         guard let observations = request.results as? [VNClassificationObservation] else {
-            // Image classifiers, like MyImageClassifierModel, only produce classification observations.
-            // However, other Core ML model types can produce other observations.
-            // For example, a style transfer model produces `VNPixelBufferObservation` instances.
+            /// Image classifiers, like MyImageClassifierModel, only produce classification observations.
+            /// However, other Core ML model types can produce other observations.
+            /// For example, a style transfer model produces `VNPixelBufferObservation` instances.
             print("VNRequest produced the wrong result type: \(type(of: request.results)).")
             return
         }
 
         // Create a prediction array from the observations.
-        predictions = observations.map { observation in
-            // Convert each observation into an `ImagePredictor.Prediction` instance.
-            Prediction(classification: observation.identifier,
-                       confidencePercentage: String(observation.confidence))
+        signPosePredictionResults = observations.map { observation in
+            /// Convert each observation into an `ImagePredictor.Prediction` instance.
+            SignPose(classificationName: observation.identifier,
+                       confidencePercentage: observation.confidence)
         }
     }
+    
+
+    
+    // MARK: Create Image prediction methods
+
+    /// Create public variable that stores a classification name and confidence for an image classifier's prediction.
+    var signPosePrediction = SignPose(classificationName: "")
+    
+    /// Sends a photo input to the Image Predictor to get a prediction of its content.
+    /// - Parameter image: A photo.
+    func classifyTheSign(_ image: UIImage) {
+        do {
+            try self.makePredictions(for: image, completionHandler: imagePredictionHandler)
+        } catch {
+            print("Vision was unable to make a prediction...\n\n\(error.localizedDescription)")
+        }
+    }
+
+    /// The method the Image Predictor calls when its image classifier model generates a prediction.
+    /// - Parameter predictions: An array of predictions.
+    private func imagePredictionHandler(_ predictions: [SignPose]?){
+        guard let predictions = predictions else {
+            print("No Prediction")
+            return
+        }
+        
+        /// update signPosePrediction value if prediction exist
+        signPosePrediction = predictions.first!
+    }
+    
+    
 }
 
