@@ -7,7 +7,7 @@
 
 import UIKit
 import AVKit /// audio-visual library to start camera
-import Vision
+import Vision /// image classifiacation 
 import AVFoundation /// add voice
 
 class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
@@ -23,6 +23,9 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
     /// voice
     let synth = AVSpeechSynthesizer()
     var myUtterance = AVSpeechUtterance(string: "")
+
+    let signPoseClassifier = SignPoseClassifier()
+    var detectedPose = SignPose(classificationName: "")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +63,7 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
         view.addSubview(TranslateRectangle(frame: CGRect(x: 0, y: UIScreen.main.bounds.size.height-200, width: 600, height: 200)))
 
         ///reposition the label infront of the camera (preview layer)
+        identifierLbl.text = signPoseClassifier.signPosePrediction.classificationName
         view.addSubview(identifierLbl)
         view.addSubview(infoLbl)
 
@@ -73,46 +77,44 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
         
         guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         
-        guard let model = try? VNCoreMLModel(for: MySign2().model) else { return }
-        let request = VNCoreMLRequest(model: model) { (finishedReq, err) in
-            
-            //perhaps check the err
-            
-//            print(finishedReq.results)
-            
-            guard let results = finishedReq.results as? [VNClassificationObservation] else { return }
-            
-            guard let firstObservation = results.first else { return }
-            
-            if firstObservation.confidence > 0.999 {
-                print(firstObservation.identifier, firstObservation.confidence)
-                
-                DispatchQueue.main.async {
-                    UIView.animate(withDuration: 5) {
-                        
-    //                    self.identifierLbl.text = "\(firstObservation.identifier) \(firstObservation.confidence * 100)"
-                        self.infoLbl.isHidden = true
-                        self.identifierLbl.isHidden = false
-                        self.voiceBtn.isHidden = false
-                        self.identifierLbl.text = "\(firstObservation.identifier)"
-                    }
-                }
+        //Convert into UIImage
+        let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
+        
+        ///render CIImage into CGImage
+        let context = CIContext()
+        guard let cgImage = context.createCGImage(ciImage, from: ciImage.extent) else { return }
+        
+        /// create UIImage from CGImage
+        let photo = UIImage(cgImage: cgImage)
+
+        self.signPoseClassifier.classifyTheSign(photo)
+        detectedPose = signPoseClassifier.signPosePrediction
+        
+        DispatchQueue.main.async { [self] in
+            identifierLbl.isHidden = false
+            identifierLbl.text = detectedPose.classificationName
+        }
+        
+        if detectedPose.confidencePercentage > 0.999 {
+            print(detectedPose.classificationName, detectedPose.confidencePercentage * 100)
+
+            DispatchQueue.main.async { [self] in
+                infoLbl.isHidden = true
+                identifierLbl.isHidden = false
+                voiceBtn.isHidden = false
+                identifierLbl.text = "\(detectedPose.classificationName)"
             }
-            else {
-                
-                DispatchQueue.main.async {
-                    UIView.animate(withDuration: 5) {
-                        //                    self.identifierLbl.text = "undefined"
-                        self.infoLbl.isHidden = false
-                        self.identifierLbl.isHidden = true
-                        self.voiceBtn.isHidden = true
-                        
-                    }
-                }
+        }
+        else {
+
+            DispatchQueue.main.async { [self] in
+                infoLbl.isHidden = false
+                identifierLbl.isHidden = true
+                voiceBtn.isHidden = true
             }
         }
         
-        try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
+        
     }
 
     
@@ -137,6 +139,3 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
         synth.speak(utterance)
     }
 }
-
-
-
