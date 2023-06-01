@@ -406,10 +406,12 @@
 				DEVELOPMENT_TEAM = Y9B3P2YJJC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SignTalk/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need camera access to detects the sign language";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -437,10 +439,12 @@
 				DEVELOPMENT_TEAM = Y9B3P2YJJC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SignTalk/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need camera access to detects the sign language";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
