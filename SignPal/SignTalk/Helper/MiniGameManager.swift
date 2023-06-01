@@ -10,12 +10,12 @@ import Foundation
 class MiniGameManager {
     
     //GAME
-    var signPoses : [SignPose] = [
-        SignPose(name: "C"),
-        SignPose(name: "D")
-//        SignPose(name: "C"),
-//        SignPose(name: "D"),
-//        SignPose(name: "E"),
+    var signPoseQuestionList : [String] = [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
     ]
     
     var question = ""
@@ -25,11 +25,12 @@ class MiniGameManager {
     }
     
     func setRandomQuestion() {
-        question = signPoses.randomElement()!.name
+        question = signPoseQuestionList.randomElement()!
     }
     
     func isCorrect(detectedPose : String) -> Bool {
         print("~\(detectedPose == question) - q:\(question) __  ans:\(detectedPose)")
+        
         if detectedPose == question {
             return true
         }
