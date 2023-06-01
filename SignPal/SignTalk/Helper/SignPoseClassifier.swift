@@ -22,7 +22,7 @@ class SignPoseClassifier {
         let defaultConfig = MLModelConfiguration()
 
         // Create an instance of the image classifier's wrapper class.
-        let imageClassifierWrapper = try? MySign2(configuration: defaultConfig)
+        let imageClassifierWrapper = try? MySign(configuration: defaultConfig)
 
         guard let imageClassifier = imageClassifierWrapper else {
             fatalError("App failed to create the model instance")

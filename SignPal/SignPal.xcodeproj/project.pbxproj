@@ -17,7 +17,7 @@
 		8F3A08AF2A1DC206000B3FE3 /* TranslateRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A08AE2A1DC206000B3FE3 /* TranslateRectangle.swift */; };
 		8FE53B752A1EC1FB00AB9163 /* MiniGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE53B742A1EC1FB00AB9163 /* MiniGameManager.swift */; };
 		8FE53B772A1EC25000AB9163 /* SignPose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE53B762A1EC25000AB9163 /* SignPose.swift */; };
-		8FE53B7B2A1ECAC500AB9163 /* MySign2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8FE53B7A2A1ECAC500AB9163 /* MySign2.mlmodel */; };
+		8FE53B7B2A1ECAC500AB9163 /* MySign.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8FE53B7A2A1ECAC500AB9163 /* MySign.mlmodel */; };
 		8FE53B822A1EF4BE00AB9163 /* SignPoseClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE53B812A1EF4BE00AB9163 /* SignPoseClassifier.swift */; };
 		8FE53B842A1EF70800AB9163 /* CGImage+UIImage_PropertyOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE53B832A1EF70800AB9163 /* CGImage+UIImage_PropertyOrientation.swift */; };
 		8FE53B872A1EF7B200AB9163 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE53B862A1EF7B200AB9163 /* GameViewController.swift */; };
@@ -37,7 +37,7 @@
 		8F3A08AE2A1DC206000B3FE3 /* TranslateRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateRectangle.swift; sourceTree = "<group>"; };
 		8FE53B742A1EC1FB00AB9163 /* MiniGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniGameManager.swift; sourceTree = "<group>"; };
 		8FE53B762A1EC25000AB9163 /* SignPose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignPose.swift; sourceTree = "<group>"; };
-		8FE53B7A2A1ECAC500AB9163 /* MySign2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MySign2.mlmodel; sourceTree = "<group>"; };
+		8FE53B7A2A1ECAC500AB9163 /* MySign.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MySign.mlmodel; sourceTree = "<group>"; };
 		8FE53B812A1EF4BE00AB9163 /* SignPoseClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignPoseClassifier.swift; sourceTree = "<group>"; };
 		8FE53B832A1EF70800AB9163 /* CGImage+UIImage_PropertyOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImage+UIImage_PropertyOrientation.swift"; sourceTree = "<group>"; };
 		8FE53B862A1EF7B200AB9163 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				8FE53B762A1EC25000AB9163 /* SignPose.swift */,
-				8FE53B7A2A1ECAC500AB9163 /* MySign2.mlmodel */,
+				8FE53B7A2A1ECAC500AB9163 /* MySign.mlmodel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -247,7 +247,7 @@
 			files = (
 				8F3A088E2A1D1C42000B3FE3 /* MainViewController.swift in Sources */,
 				8F3A088A2A1D1C42000B3FE3 /* AppDelegate.swift in Sources */,
-				8FE53B7B2A1ECAC500AB9163 /* MySign2.mlmodel in Sources */,
+				8FE53B7B2A1ECAC500AB9163 /* MySign.mlmodel in Sources */,
 				8FE53B822A1EF4BE00AB9163 /* SignPoseClassifier.swift in Sources */,
 				8FE53B872A1EF7B200AB9163 /* GameViewController.swift in Sources */,
 				8F3A08AF2A1DC206000B3FE3 /* TranslateRectangle.swift in Sources */,
