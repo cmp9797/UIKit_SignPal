@@ -5,8 +5,8 @@
 //  Created by Celine Margaretha on 25/05/23.
 //
 
-import Vision
-import UIKit
+import Vision // for image classification
+import UIKit // for UIImage
 
 /// A  class that makes image classification predictions.
 
@@ -22,6 +22,7 @@ class SignPoseClassifier {
         let defaultConfig = MLModelConfiguration()
 
         // Create an instance of the image classifier's wrapper class.
+        // Note: You can replace "MySign" with your CoreML model name
         let imageClassifierWrapper = try? MySign(configuration: defaultConfig)
 
         guard let imageClassifier = imageClassifierWrapper else {
@@ -77,7 +78,7 @@ class SignPoseClassifier {
     
     
     // MARK: Starts an image classification request for inputed image
-    /// Generates a new request instance that uses the Image Predictor's image classifier model.
+    /// Generates a new request instance that uses the image classifier model.
     private func createImageClassificationRequest() -> VNImageBasedRequest {
         // Create an image classification request with an image classifier model.
         let imageClassificationRequest = VNCoreMLRequest(model: SignPoseClassifier.imageClassifier, completionHandler: visionRequestHandler)
@@ -143,7 +144,7 @@ class SignPoseClassifier {
     
 
     
-    // MARK: Create Image prediction methods
+    // MARK: Create Cmethods
 
     /// Create public variable that stores a classification name and confidence for an image classifier's prediction.
     var signPosePrediction = SignPose(classificationName: "")
