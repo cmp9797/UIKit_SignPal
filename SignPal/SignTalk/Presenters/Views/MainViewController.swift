@@ -13,20 +13,17 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        print("View Controller")
+//        print("View Controller")
         startRotationAnimation()
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("yoww")
         startRotationAnimation()
     }
     
     func startRotationAnimation() {
-        
             UIView.animate(
                 withDuration: 1,
                 delay: 1,
