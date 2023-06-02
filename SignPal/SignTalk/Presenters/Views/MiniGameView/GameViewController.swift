@@ -11,7 +11,7 @@ class GameViewController: UIViewController {
     
     /// A predictor instance that uses Vision and Core ML to generate prediction strings from a photo.
     let signPoseClassifier = SignPoseClassifier()
-    let miniGameManager = MiniGameManager()
+    let miniGameManager = GameManager()
     
     var detectedPose = SignPose(classificationName: "")
     var timer: Timer?
@@ -25,26 +25,31 @@ class GameViewController: UIViewController {
         present(cameraPicker, animated: false)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         questionLbl.text = miniGameManager.question
         detectedPose = signPoseClassifier.signPosePrediction
     }
     
-}
-
-
-extension GameViewController {
-    // MARK: Main storyboard updates
-    /// Updates the storyboard's image view.
-
+    /// Notifies the view controller when a user selects a photo in the camera picker or photo library picker.
+    /// - Parameter photo: A photo from the camera or photo library.
+    func validatePhoto(_ photo: UIImage) {
+        //DispatchQueue.global(qos: .userInitiated).async {
+        self.signPoseClassifier.classifyTheSign(photo)
+        
+        detectedPose = signPoseClassifier.signPosePrediction
+        //}
+        showPopup()
+    }
+    
+    func generateNewQuestion() {
+        miniGameManager.setRandomQuestion()
+        questionLbl.text = miniGameManager.question
+    }
+    
     func showPopup() {
-        print("quest: \(miniGameManager.question) // label: \(questionLbl.text ?? "nayy")")
-        print("ans: \(detectedPose)")
+//        print("quest: \(miniGameManager.question) // label: \(questionLbl.text ?? "nayy")")
+//        print("ans: \(detectedPose)")
         
         if miniGameManager.isCorrect(detectedPose: detectedPose.classificationName) {
             popUpIconLbl!.image = UIImage(systemName: "checkmark.circle.fill")
@@ -75,23 +80,6 @@ extension GameViewController {
         popUpTextLbl.isHidden = true
         timer?.invalidate()
     }
-    
-    func generateNewQuestion() {
-        miniGameManager.setRandomQuestion()
-        questionLbl.text = miniGameManager.question
-    }
-    
-    /// Notifies the view controller when a user selects a photo in the camera picker or photo library picker.
-    /// - Parameter photo: A photo from the camera or photo library.
-    func validatePhoto(_ photo: UIImage) {
-//        DispatchQueue.global(qos: .userInitiated).async {
-        self.signPoseClassifier.classifyTheSign(photo)
-        
-        detectedPose = signPoseClassifier.signPosePrediction
-//        }
-        showPopup()
-    }
-    
     
     
 }
