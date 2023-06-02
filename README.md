@@ -11,9 +11,9 @@ The app is designed to assist individuals who are unfamiliar with sign language 
 
 ## Technology 
 - Machine learning (CreateML Image Classification)
-- UIKit
-- Vision
-- AVFoundation
+- UIKit -> enable to manipulate the interfaces
+- Vision -> used for image classification
+- AVFoundation -> used for camera & text-to-speech
 
 
 ## How the App Works
