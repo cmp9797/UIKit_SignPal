@@ -2,22 +2,22 @@
 
 <img src="https://github.com/cmp9797/UIKit_SignPal/blob/main/SignPal/appPreview.png" alt="app preview"></img>
 
-### App description 
+## App description 
 An interactive sign language companion app that utilized Apple’s machine learning technology. It helps users to classify the hand-sign poses into text or voice. The app enables users to enhance their knowledge of sign language through an engaging mini-game. The app provides real-time translation and a guessing game to foster improved communication with individuals who have speech or hearing disabilities.
 
 
-### Use case
+## Use case
 The app is designed to assist individuals who are unfamiliar with sign language in understanding the meaning of specific sign poses. It simplifies communication by minimizing the need for taking notes or typing text during their interactions. The app caters to a diverse range of users, including those who have no prior knowledge of sign language as well as sign language enthusiasts.
 
 
-### Technology 
+## Technology 
 - Machine learning (CreateML Image Classification)
 - UIKit
 - Vision
 - AVFoundation
 
 
-### How the App Works
+## How the App Works
 1. **Real-time Translation**: 
 Users can initiate the translation by enabling access to their device's camera and posing their hands. The app captures and displays the translation on the device screen in real-time.
 
