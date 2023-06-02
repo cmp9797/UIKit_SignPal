@@ -6,9 +6,11 @@
 //
 
 import UIKit
-import AVKit /// audio-visual library to start camera
-import Vision /// image classifiacation 
-import AVFoundation /// add voice
+import AVFoundation /// lower-level control and a wider range of capabilities for advanced media handling -> camera,  voice
+
+//import AVKit
+/// higher-level framework that simplifies media playback integration with pre-built components and UI elements
+
 
 class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
