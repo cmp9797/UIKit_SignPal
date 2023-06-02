@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MiniGameManager {
+class GameManager {
     
     //GAME
     var signPoseQuestionList : [String] = [
@@ -29,7 +29,7 @@ class MiniGameManager {
     }
     
     func isCorrect(detectedPose : String) -> Bool {
-        print("~\(detectedPose == question) - q:\(question) __  ans:\(detectedPose)")
+//        print("-> \(detectedPose == question) - q:\(question) __  ans:\(detectedPose)")
         
         if detectedPose == question {
             return true
