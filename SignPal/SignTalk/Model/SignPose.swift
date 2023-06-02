@@ -10,6 +10,6 @@ struct SignPose {
     /// object's name (which class it belongs to)
     var classificationName : String
     
-    /// image classifier's confidence as a percentage
+    /// image classifier's confidence 
     var confidencePercentage : Float = 0
 }
