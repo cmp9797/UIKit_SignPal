@@ -29,7 +29,7 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Translate view controller")
+//        print("Translate view controller")
    
         /// Start Camera
         let captureSession = AVCaptureSession()
@@ -41,17 +41,14 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
         
         DispatchQueue.global().async {
             captureSession.startRunning() /// start to run/open the camera\
-            print("camera")
+//            print("camera")
         }
        
         
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         view.layer.addSublayer(previewLayer)
-        previewLayer.frame = view.bounds
+        previewLayer.frame = view.bounds /// other alternative -> view.frame
         previewLayer.videoGravity = .resizeAspectFill
-
-//        previewLayer.frame = view.bounds
-//        previewLayer.videoGravity = .resizeAspectFill
         
         /// Get access to the cameras frame layer
         let dataOutput = AVCaptureVideoDataOutput()
@@ -62,22 +59,21 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
     
         view.addSubview(TranslateRectangle(frame: CGRect(x: 0, y: UIScreen.main.bounds.size.height-200, width: 600, height: 200)))
 
-        ///reposition the label infront of the camera (preview layer)
         identifierLbl.text = signPoseClassifier.signPosePrediction.classificationName
+        
         view.addSubview(identifierLbl)
         view.addSubview(infoLbl)
-
-        /// add speaker
         view.addSubview(voiceBtn)
     }
     
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) { /// called everytime the camera is able to capture a frame
+    /// this function called everytime the camera is able to capture a frame
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         
 //        print("Camera was able to capture a frame:", Date())
         
         guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         
-        //Convert into UIImage
+        //Convert CIImage into UIImage
         let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
         
         ///render CIImage into CGImage
@@ -96,7 +92,7 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
         }
         
         if detectedPose.confidencePercentage > 0.999 {
-            print(detectedPose.classificationName, detectedPose.confidencePercentage * 100)
+//            print(detectedPose.classificationName, detectedPose.confidencePercentage * 100)
 
             DispatchQueue.main.async { [self] in
                 infoLbl.isHidden = true
