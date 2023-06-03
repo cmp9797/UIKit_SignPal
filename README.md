@@ -4,11 +4,14 @@ An interactive sign language companion app that utilized Apple’s machine learn
 
 <img src="https://github.com/cmp9797/UIKit_SignPal/blob/main/appPreview.png" alt="app preview"></img>
 
-## Technology 
+### Technology 
 - Machine learning (CreateML Image Classification)
 - UIKit -> enable to manipulate the interfaces
 - Vision -> used for image classification
 - AVFoundation -> used for camera & text-to-speech
+
+
+
 
 
 © 2023 Celine Margaretha Pranoto. All Rights Reserved.
