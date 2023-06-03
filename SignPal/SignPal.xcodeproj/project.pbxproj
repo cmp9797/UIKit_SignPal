@@ -58,7 +58,7 @@
 		8F3A087D2A1D1C42000B3FE3 = {
 			isa = PBXGroup;
 			children = (
-				8F3A08882A1D1C42000B3FE3 /* SignTalk */,
+				8F3A08882A1D1C42000B3FE3 /* SignPal */,
 				8F3A08872A1D1C42000B3FE3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,7 +71,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8F3A08882A1D1C42000B3FE3 /* SignTalk */ = {
+		8F3A08882A1D1C42000B3FE3 /* SignPal */ = {
 			isa = PBXGroup;
 			children = (
 				8F3A08892A1D1C42000B3FE3 /* AppDelegate.swift */,
@@ -84,7 +84,7 @@
 				8F3A08972A1D1C44000B3FE3 /* Info.plist */,
 				8F3A08922A1D1C44000B3FE3 /* Assets.xcassets */,
 			);
-			path = SignTalk;
+			path = SignPal;
 			sourceTree = "<group>";
 		};
 		8F3A089D2A1D2866000B3FE3 /* Core */ = {
@@ -190,7 +190,7 @@
 			dependencies = (
 			);
 			name = SignPal;
-			productName = SignTalk;
+			productName = SignPal;
 			productReference = 8F3A08862A1D1C42000B3FE3 /* SignPal.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -405,7 +405,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Y9B3P2YJJC;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SignTalk/Info.plist;
+				INFOPLIST_FILE = SignPal/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need camera access to detects the sign language";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
@@ -438,7 +438,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Y9B3P2YJJC;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SignTalk/Info.plist;
+				INFOPLIST_FILE = SignPal/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need camera access to detects the sign language";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
