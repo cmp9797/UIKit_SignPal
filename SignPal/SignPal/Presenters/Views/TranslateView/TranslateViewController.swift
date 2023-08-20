@@ -62,6 +62,7 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
         view.addSubview(TranslateRectangle(frame: CGRect(x: 0, y: UIScreen.main.bounds.size.height-200, width: 600, height: 200)))
 
         identifierLbl.text = signPoseClassifier.signPosePrediction.classificationName
+//        infoLbl.text = NSLocalizedString("   Invalid alphanumerical sign   ", tableName: nil, bundle: Bundle.main, value: " Halo", comment: "Translate InfoLbl")
         
         view.addSubview(identifierLbl)
         view.addSubview(infoLbl)
@@ -123,12 +124,13 @@ class TranslateViewController: UIViewController, AVCaptureVideoDataOutputSampleB
         
         // Configure the utterance.
         utterance.rate = 0.45 ///  the speed of speech
-        utterance.pitchMultiplier = 1.6 /// the pitch level
+        utterance.pitchMultiplier = 1.5 /// the pitch level
         utterance.postUtteranceDelay = 0.2 /// the delay after each speech
         utterance.volume = 0.8
 
-        // Retrieve the British English voice.
-        let voice = AVSpeechSynthesisVoice(language: "en-US")
+        // Retrieve the British English voice. -> follow default language settings
+//        let voice = AVSpeechSynthesisVoice(language: "en-US")
+        let voice = AVSpeechSynthesisVoice(language: NSLocale.current.language.languageCode!.identifier)
 
         // Assign the voice to the utterance.
         utterance.voice = voice

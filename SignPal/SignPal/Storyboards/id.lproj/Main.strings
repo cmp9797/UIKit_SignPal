@@ -1,0 +1,53 @@
+//INTERNATIONALIZING
+
+/* Class = "UILabel"; text = "In sign language,"; ObjectID = "12Y-R9-p9m"; */
+"12Y-R9-p9m.text" = "Dalam bahasa isyarat,";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ANh-VC-MNX"; */
+"ANh-VC-MNX.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Take Photo"; ObjectID = "Kc0-qw-Yyb"; */
+"Kc0-qw-Yyb.configuration.title" = "Ambil Foto";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Kc0-qw-Yyb"; */
+"Kc0-qw-Yyb.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Sign Pal"; ObjectID = "Knu-Yq-Xws"; */
+"Knu-Yq-Xws.text" = "Sign Pal";
+
+/* Class = "UIButton"; configuration.title = "Mini Game"; ObjectID = "MpI-ce-EGt"; */
+"MpI-ce-EGt.configuration.title" = "Mini Game";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "MpI-ce-EGt"; */
+"MpI-ce-EGt.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "how to say :"; ObjectID = "T1Z-mf-KMz"; */
+"T1Z-mf-KMz.text" = "bagaimana cara mengucapkan:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "gP6-u9-IjE"; */
+"gP6-u9-IjE.text" = "Label";
+
+/* Class = "UILabel"; text = "Oops, try again.."; ObjectID = "gav-8V-05U"; */
+"gav-8V-05U.text" = "Oops, coba lagi..";
+
+/* Class = "UIButton"; configuration.title = "Translator"; ObjectID = "hGM-3p-G01"; */
+"hGM-3p-G01.configuration.title" = "Penerjemah";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "hGM-3p-G01"; */
+"hGM-3p-G01.normalTitle" = "Button";
+
+/* Class = "UIViewController"; title = "TranslateViewController"; ObjectID = "tQx-z5-cWp"; */
+"tQx-z5-cWp.title" = "TranslateViewController";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "zkI-kn-PW8"; */
+"zkI-kn-PW8.text" = "Label";
+
+"iUy-GP-qZB.text" = "yoeho";
+
+//LOCALIZING
+
+/* Game PopUp WrongAnswer */
+"Oops, try again.." = "Oops, coba lagi!";
+
+/* Translate InfoLbl */
+"   Invalid alphanumerical sign   " = "   Isyarat alfanumerik tidak valid   ";

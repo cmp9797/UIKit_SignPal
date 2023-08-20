@@ -55,14 +55,20 @@ class GameViewController: UIViewController {
             popUpIconLbl!.image = UIImage(systemName: "checkmark.circle.fill")
             popUpIconLbl.tintColor = UIColor.green
             
-            popUpTextLbl.text = "Yeay, you got it!"
+//            popUpTextLbl.text = "Yeay, you got it!"
+            popUpTextLbl.text = NSLocalizedString("Yeay, kamu berhasil!", comment: "Game PopUp RightAnswer")
             generateNewQuestion()
             
         } else {
             popUpIconLbl.image = UIImage(systemName: "xmark.circle.fill")
             popUpIconLbl.tintColor = UIColor.red
 
-            popUpTextLbl.text = "Whoops, try again!"
+//            popUpTextLbl.text = "Whoops, try again!"
+//            popUpTextLbl.text = NSLocalizedString("Oops, coba lagi!", comment: "Game PopUp WrongAnswer")
+            popUpTextLbl.text = NSLocalizedString("Oops, try again..", comment: "")
+            print("WOEE")
+            print(popUpTextLbl.text
+                  ?? "o.o")
         }
         
         self.popUpIconLbl.backgroundColor = UIColor(named: "White1")

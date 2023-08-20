@@ -35,6 +35,9 @@
 		8F3A08972A1D1C44000B3FE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F3A08A62A1D39E8000B3FE3 /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
 		8F3A08AE2A1DC206000B3FE3 /* TranslateRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateRectangle.swift; sourceTree = "<group>"; };
+		8FA6D50B2A92479E00A245E6 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		8FA6D50D2A92608500A245E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		8FA6D50F2A926F0600A245E6 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Main.strings; sourceTree = "<group>"; };
 		8FE53B742A1EC1FB00AB9163 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		8FE53B762A1EC25000AB9163 /* SignPose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignPose.swift; sourceTree = "<group>"; };
 		8FE53B7A2A1ECAC500AB9163 /* MySign.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MySign.mlmodel; sourceTree = "<group>"; };
@@ -216,6 +219,7 @@
 			knownRegions = (
 				en,
 				Base,
+				id,
 			);
 			mainGroup = 8F3A087D2A1D1C42000B3FE3;
 			productRefGroup = 8F3A08872A1D1C42000B3FE3 /* Products */;
@@ -267,6 +271,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				8F3A08902A1D1C42000B3FE3 /* Base */,
+				8FA6D50D2A92608500A245E6 /* en */,
+				8FA6D50F2A926F0600A245E6 /* id */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -275,6 +281,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8F3A08952A1D1C44000B3FE3 /* Base */,
+				8FA6D50B2A92479E00A245E6 /* id */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -286,6 +293,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -346,6 +354,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

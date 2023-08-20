@@ -97,14 +97,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="In sign language," textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12Y-R9-p9m">
-                                <rect key="frame" x="25" y="142" width="325" height="38.333333333333343"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <rect key="frame" x="25" y="132" width="325" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" name="Blue3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="how to say :" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1Z-mf-KMz">
-                                <rect key="frame" x="25" y="180.33333333333334" width="325" height="38.333333333333343"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="how to say :" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1Z-mf-KMz">
+                                <rect key="frame" x="25" y="168" width="325" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" name="Blue3"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -123,7 +123,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOj-KP-B5l">
-                                <rect key="frame" x="25" y="288.66666666666669" width="325" height="0.0"/>
+                                <rect key="frame" x="25" y="274" width="325" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="209"/>
                                 <color key="textColor" name="Blue3"/>
                                 <nil key="highlightedColor"/>
@@ -164,7 +164,7 @@
                             <constraint firstItem="DKk-VD-idY" firstAttribute="leading" secondItem="6Mh-D5-ffq" secondAttribute="leading" id="dSn-5Z-nFk"/>
                             <constraint firstAttribute="bottom" secondItem="DKk-VD-idY" secondAttribute="bottom" id="iIx-f4-UDu"/>
                             <constraint firstItem="d5Z-B1-9Jc" firstAttribute="centerX" secondItem="17y-fX-lqN" secondAttribute="centerX" id="qpd-8q-BnH"/>
-                            <constraint firstItem="12Y-R9-p9m" firstAttribute="top" secondItem="6Mh-D5-ffq" secondAttribute="top" constant="48" id="rdc-wr-fi1"/>
+                            <constraint firstItem="12Y-R9-p9m" firstAttribute="top" secondItem="6Mh-D5-ffq" secondAttribute="top" constant="38" id="rdc-wr-fi1"/>
                             <constraint firstItem="fOj-KP-B5l" firstAttribute="leading" secondItem="6Mh-D5-ffq" secondAttribute="leading" constant="25" id="u3B-ub-tvt"/>
                             <constraint firstItem="6Mh-D5-ffq" firstAttribute="trailing" secondItem="T1Z-mf-KMz" secondAttribute="trailing" constant="25" id="zB6-Mm-ar3"/>
                             <constraint firstItem="DKk-VD-idY" firstAttribute="trailing" secondItem="6Mh-D5-ffq" secondAttribute="trailing" id="zDk-x6-LEy"/>
@@ -212,7 +212,7 @@
                                     <action selector="voiceBtnClicked:" destination="tQx-z5-cWp" eventType="touchUpInside" id="gOL-P8-Z7e"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUy-GP-qZB">
+                            <label opaque="NO" alpha="0.40000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUy-GP-qZB">
                                 <rect key="frame" x="55.666666666666657" y="498" width="264" height="30"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -252,13 +252,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5yW-Gd-P5K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gP6-u9-IjE">
-                    <rect key="frame" x="0.0" y="0.0" width="253" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </objects>
             <point key="canvasLocation" x="1853.5999999999999" y="3.6945812807881775"/>
         </scene>
